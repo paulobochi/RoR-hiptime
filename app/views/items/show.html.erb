@@ -4,7 +4,9 @@
 
   <div class="col-sm-4 col-sm-offset-4">
     <%= link_to 'Back', root_path %>
-    <%= link_to 'Edit', edit_item_path %>
-    <%= link_to 'Delete', item_path, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% if current_user && @item.user && current_user.id == @item.user.id %>
+      <%= link_to 'Edit', edit_item_path %>
+      <%= link_to 'Delete', item_path, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
   </div>
 </div>
